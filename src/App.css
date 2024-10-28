@@ -1,0 +1,11 @@
+/*  */
+/* Icono de carrito en el navbar */
+.cartIcon {
+    width: 40px;
+    height: 40px; 
+}
+
+/* probando estilos en greeting, es una prop de texto */
+.greeting{
+    color: aquamarine;
+}
