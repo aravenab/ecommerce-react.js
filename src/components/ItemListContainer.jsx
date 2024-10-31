@@ -4,7 +4,7 @@ import React from 'react';
 const ItemListContainer = ({greeting}) => {
     return (
 <>
-    <h1 className='greeting'>{greeting}</h1>
+    <h1 className='greeting text-center'>{greeting}</h1>
 </>
     );
 };
