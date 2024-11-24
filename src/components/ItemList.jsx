@@ -1,12 +1,13 @@
 import React from 'react'
 import Item from './Item'
 
-const ItemList = ({items}) => {
+const ItemList = ({products}) => {
   return (
-    <div style={{display:'flex', justifyContent:'space-around', alignItems:'center', flexWrap:'wrap'}}>
-        {items.map((producto)=><Item key={producto.id} producto={producto}/>)}
+    <div className='d-flex justify-content-around align-items-center flex-wrap'>
+        {products.map((product)=> <Item product={product} key={product.id}/>)}
     </div>
   )
 }
 
 export default ItemList
+

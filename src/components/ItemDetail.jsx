@@ -3,16 +3,15 @@ import ItemCount from './ItemCount'
 
 const ItemDetail = ({producto}) => {
     const onAdd = (cantidad) =>{
-        alert(`Compraste ${cantidad} productos!`)
+        alert(`Agregaste al carrito ${cantidad} productos`)
     }
   return (
-    <div style={{display:'FLEX', justifyContent:'center', flexDirection:'column', alignItems:'center'}}>
-        <h2>Detalle de: {producto.name}</h2>
-        <img src={producto.img} alt={producto.name}/>
+    <div>
+        <h1>Detalle del producto:{producto.name}</h1>
+        <img src={producto.img} alt={producto.img}/>
         <p>{producto.description}</p>
-        <p>Stock: {producto.stock}</p>
         <p>${producto.price}</p>
-        <ItemCount stock={producto.stock} initial={1} onAdd={onAdd}/>
+        <ItemCount stock={producto.stock} onAdd={onAdd}/>
     </div>
   )
 }

@@ -1,32 +1,40 @@
-import {useEffect, useState} from 'react'
-import { getProducts } from './mock/data'
+import React, {useState, useEffect} from 'react'
+import { getProducts } from "../mock/data"
 import ItemList from './ItemList'
-import { useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
 
 
-const ItemListContainer = ({greeting}) => {
-    const [items, setItems] = useState([])
-    const {categoryId}= useParams()
-   
+const ItemListContainer = ({greeting, texto}) => {
+    const [products, setProducts] = useState([])
+    const [loading, setLoading]= useState(false)
+    const {category}= useParams()
+    // const {greeting, texto} = props
     useEffect(()=>{
+        setLoading(true)
         getProducts()
         .then((res)=>{
-            if(categoryId){
-                //filtro
-                setItems(res.filter((producto) => producto.category === categoryId))
+            if(category){
+                //filtrar
+                setProducts(res.filter((prod)=> prod.category === category ))
             }else{
-                //respuesta sin filtrar
-                setItems(res)
+                setProducts(res)
             }
         })
         .catch((error)=> console.log(error))
-    },[categoryId])
-
+        .finally(()=> setLoading(false))
+    },[category])
 
     return(
         <div>
-            <h1 className="text-center">{greeting}</h1>
-            <ItemList items={items}/>
+          
+            <h1 className="text-center">{greeting}<span style={{textTransform:'capitalize', color:'violet'}}>{category}</span></h1>
+            {/* Ejemplos */}
+            {/* <p>{texto}</p>
+            <Button variant="primary">Primary</Button>
+            <button type="button" className="btn btn-danger">Danger</button> */}
+            {/* Esto mas adelante no va a estar en este componente */}
+           {loading ? <p>Cargando...</p>: <ItemList products={products}/>}
+           
         </div>
     )
 }

@@ -1,20 +1,18 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
-const Item = ({producto}) => {
-  const navegar = useNavigate()
+const Item = ({product}) => {
   return (
-    <div>
-        <img src={producto.img} alt={producto.name}/>
-        <p>{producto.name}</p>
-        <p>${producto.price},00</p>
-        {/* template string */}
-        <Link className='btn btn-primary' to={`/item/${producto.id}`}>Ver más</Link>
-        {/* Sin template string */}
-        {/* <Link className='btn btn-primary' to={'/item/'+producto.id}>Ver más</Link> */}
-        {/* Con useNavigate */}
-        {/* <button className='btn btn-primary' onClick={()=> navegar(`/item/${producto.id}`)} >Ver más</button> */}
-    </div>
+    <div className="card" style={{width:'18rem', marginTop:10}}>
+  <img src={product.img} className="card-img-top" alt={product.name}/>
+  <div className="card-body">
+    <h5 className="card-title">{product.name}</h5>
+    <p className="card-text">${product.price}</p>
+    <Link to={`/item/${product.id}`} className="btn btn-primary">Ver más</Link>
+    
+    {/* <Link to={'/item/'+product.id} className="btn btn-primary">Ver más</Link> */}
+  </div>
+</div>
   )
 }
 
